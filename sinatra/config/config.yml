@@ -1,0 +1,78 @@
+##### CHEF Configuration
+
+# this is an array of all the chef servers you want to query containing the following attributes:
+#
+# name: A human-friendly name for the server
+# knife_config_path: Path to the correct knife.rb file to connect to this server
+# stale_node_timeout: The number of seconds after which a node is marked as "stale" (i.e. it has not run chef during this period)
+
+chef_servers:
+ - name: "First Server"
+   knife_config_path: "path/to/knife/config-1.rb"
+   stale_node_timeout: 7200
+ - name: "Second Server"
+   knife_config_path: "path/to/knife/config-2.rb"
+   stale_node_timeout: 7200
+   
+##### JIRA CONFIGURATION
+
+# This is an array of settings to connect to a Jira server and execute filters.
+# 
+# AUTHENTICATION
+#   ============
+#  
+#  The following attributes are used:
+#
+#  jira_url: The URL (including port number if required) for the Jira server - NOTE: This should be the FQDN of the server, not the full path to the API
+#  jira_user: A username to authenticate against the JIRA installation
+#  jira_pass: The password for the above user account
+
+jira_url: "https://jira.hpcloud.net/"
+jira_user: "fred"
+jira_pass: "A very secure password"
+
+# JIRA Filters
+#
+# This is where we configure the various filters that are to be searched and used within the web app.
+#
+# At present, the format is as follows:
+#
+#  name: A "system-friendly" (i.e. no spaces or other characters) name that can be used as the index for a Hash
+#  description: A human-friendly description for the filter used in the web interface
+#  filter_id: The filter ID from JIRA
+#  method: The method used to report on the filter (see the FILTERS section below)
+#  offset: OPTIONAL - only used when method is set to "with_limit", gives the offset to start from when returning results, defaults to 0
+#  limit:  OPTIONAL - only used when method is set to "with_limit", limits the number of results returned, defaults to 0 (all results)
+#
+#
+# FILTERS
+#
+#  There are three types of filter supported by default:
+#    
+#    total - returns the total number of results returned for a given filter
+#    with_limit - returns the full results for a filter, can be limited and offset if required
+#    list - returns a hash as follows: {"total" => totl_number_of_tickets_found,"tickets" => {ticket_id => "ticket_summary"}}
+#
+jira_filters:
+ - name: "current_techops"
+   description: "Current Techops Ticket"
+   filter_id: 15519
+   method: "with_limit"
+   limit: 1
+ - name: "current_basenode"
+   description: "Current Basenode Ticket"
+   filter_id: 15520
+   method: "with_limit"
+   limit: 1
+ - name: "open_sys_tickets"
+   description: "Open Sys Tickets"
+   filter_id: 15578
+   method: "total"
+ - name: "unassigned_tickets"
+   description: "Unassigned SYS Tickets"
+   filter_id: 15579
+   method: "total"
+ - name: "blockers"
+   description: "Tickets that are blocking other tasks"
+   filter_id: 15580
+   method: "list"

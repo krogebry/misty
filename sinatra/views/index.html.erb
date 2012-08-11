@@ -1,0 +1,97 @@
+
+<script type="text/javascript" src="/js/ext-4.1.1/ext-all-debug.js"></script>
+<script type="text/javascript" src="/js/misty/environment_manager.js"></script>
+<link href="/css/ext-4.1.1/ext-all-debug.css" media="screen" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+Ext.onReady(function(){
+
+  var btn_rndc = Ext.create( "Ext.Button",{
+    text: "R&D C",
+    handler: function(){
+      var env_mgr = new EnvironmentManager({
+        name: "rndc",
+        title: "R&D C"
+      });
+      Ext.getCmp( 'center_container' ).add( env_mgr ).show();
+    }
+  });
+
+  var nav_panel = Ext.create( "Ext.panel.Panel", {
+    items: [{
+      title: "R&D",
+      items: [btn_rndc]
+    },{
+      html: "Buttons",
+      title: "SerialTesting ( ST )"
+    },{
+      html: "Buttons",
+      title: "Production"
+    }],
+    title: "Navigation",
+    width: 200,
+    layout: 'accordion',
+    region: 'west',
+    defaults: {
+      bodyStyle: 'padding:15px'
+    },
+    layoutConfig: {
+      animate: true,
+      activeOnTop: true,
+      titleCollapse: false,
+    },
+    collapsible: true
+  });
+
+  Ext.create('Ext.container.Viewport', {
+    layout: 'border',
+    items: [{
+      html: '<h1 class="x-panel-header"><img src="/images/hp-cloud-logo.png" /></h1>',
+      region: 'north',
+      border: false,
+      height: 40,
+      margins: '0 0 5 0'
+    }, 
+
+    nav_panel,
+    
+    /**
+    {
+      title: 'Navigation',
+      width: 150,
+      region: 'west',
+      collapsible: true
+      // could use a TreePanel or AccordionLayout for navigational items
+    }, 
+    */
+    
+    {
+      html: 'Information goes here',
+      title: 'South Panel',
+      split: true,
+      region: 'south',
+      height: 100,
+      minHeight: 100,
+      collapsible: true
+    }, {
+      title: 'East Panel',
+      split: true,
+      width: 150,
+      region: 'east',
+      collapsible: true
+    }, {
+      id: 'center_container',
+      region: 'center',
+      xtype: 'tabpanel',
+      // TabPanel itself has no title
+      activeTab: 0,
+      // First tab active by default
+      items: {
+        title: 'Default Tab',
+        html: 'The first tab\'s content. Others may be added dynamically'
+      }
+    }]
+  });
+
+});
+</script>

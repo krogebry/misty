@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#chef-solo -c solo.rb -j nodes/`hostname`.json 
+chef-solo -c solo.rb -j nodes/$1.json 
