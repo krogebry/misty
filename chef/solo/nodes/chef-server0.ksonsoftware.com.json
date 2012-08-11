@@ -1,4 +1,4 @@
 {
-  "run_list": [ "role[base]","role[chef-server]" ]
+  "run_list": [ "role[base]","role[chef-server]","role[auth-server]" ]
 }
 
