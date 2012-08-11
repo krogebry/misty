@@ -13,6 +13,20 @@ directory "%s/.tmp" % ENV['HOME'] do
 	recursive true
 end
 
+directory "%s/.ssh" % ENV['HOME'] do
+	owner ENV['SUDO_USER']
+	group ENV['SUDO_USER']
+	action :create
+	recursive true
+end
+
+cookbook_file "%s/.ssh/id_rsa" % ENV['HOME'] do
+  mode "0600"
+	owner ENV['SUDO_USER']
+	group ENV['SUDO_USER']
+	source "id_rsa"
+end
+
 directory "%s/.chef" % ENV['HOME'] do
 	owner ENV['SUDO_USER']
 	group ENV['SUDO_USER']
