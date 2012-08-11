@@ -4,5 +4,8 @@
 #apt-get -y install ruby1.9.1 rubygems
 #gem install chef 
 
-chef-solo -c solo.rb -j nodes/`hostname`.json 
+#chef-solo -c solo.rb -j nodes/`hostname`.json 
 #chef-solo -c solo.rb -j nodes/$1.json 
+
+#sudo chef-solo -c solo.rb -j nodes/`hostname`.json -r http://s3.amazonaws.com/chef-solo/bootstrap-latest.tar.gz
+sudo chef-solo -c solo.rb -j nodes/`hostname`.json 

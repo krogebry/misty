@@ -1,0 +1,9 @@
+log_level                :info
+log_location             STDOUT
+node_name                'admin'
+client_key               '/home/ubuntu/.chef/admin.pem'
+validation_client_name   'chef-validator'
+validation_key           './validation.pem'
+chef_server_url          'http://chef-server0.ksonsoftware.com:4000'
+cache_type               'BasicFile'
+cache_options( :path => '/home/ubuntu/.chef/checksums' )
