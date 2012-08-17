@@ -1,15 +1,14 @@
+##
+#
 source :rubygems
 
-gem 'sinatra-respond_to', :require => 'sinatra/respond_to'
-gem 'sinatra-contrib'
-gem 'sinatra-config-file', :require => 'sinatra/config_file'
-gem 'sinatra', :require => 'sinatra/base'
-gem 'bundler', '~> 1.1'
-gem 'haml'
 gem 'chef'
 gem 'thin'
-gem 'pkgr'
-gem 'jira4r-jh-ruby1.9'
+gem 'erubis'
+gem 'sinatra', :require => 'sinatra/base'
+gem 'sinatra-contrib'
+gem 'sinatra-respond_to', :require => 'sinatra/respond_to'
+gem 'sinatra-config-file', :require => 'sinatra/config_file'
 
 group :development do
   gem 'rake'

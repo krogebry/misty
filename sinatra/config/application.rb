@@ -10,9 +10,6 @@ require 'sinatra/contrib/all'
 SINATRA_ROOT = File.join( File.dirname(__FILE__),".." )
 Bundler.require(:default, (ENV['RACK_ENV'] || :development).to_sym)
 
-require "%s/lib/workers/jira_worker" % SINATRA_ROOT
-require "%s/lib/workers/chef_worker" % SINATRA_ROOT
-
 module HPCS
   class Misty < Sinatra::Base
     VERSION = "0.0.1"

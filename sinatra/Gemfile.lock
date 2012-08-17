@@ -25,12 +25,8 @@ GEM
     diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (0.12.10)
-    haml (3.1.4)
     highline (1.6.13)
     ipaddress (0.8.0)
-    jira4r-jh-ruby1.9 (0.4.0)
-      soap4r-ruby1.9
-      soap4r-ruby1.9
     json (1.6.1)
     mime-types (1.19)
     mixlib-authentication (1.1.4)
@@ -53,8 +49,6 @@ GEM
       mixlib-log
       systemu
       yajl-ruby
-    pkgr (0.3.4)
-      rake
     polyglot (0.3.3)
     rack (1.4.1)
     rack-protection (1.2.0)
@@ -89,7 +83,6 @@ GEM
       tilt (~> 1.3)
     sinatra-respond_to (0.8.0)
       sinatra (~> 1.3)
-    soap4r-ruby1.9 (2.0.5)
     systemu (2.5.2)
     thin (1.3.1)
       daemons (>= 1.0.9)
@@ -106,11 +99,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler (~> 1.1)
   chef
-  haml
-  jira4r-jh-ruby1.9
-  pkgr
+  erubis
   rack-test
   rake
   rspec
