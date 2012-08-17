@@ -1,6 +1,8 @@
 <script type="text/javascript" src="/js/ext-4.1.1/ext-all-debug.js"></script>
 <script type="text/javascript" src="/js/misty/environment_manager.js"></script>
 <script type="text/javascript" src="/js/misty/mysql_manager.js"></script>
+<script type="text/javascript" src="/js/misty/mysql_database_viewer.js"></script>
+<script type="text/javascript" src="/js/misty/models/mysql_database.js"></script>
 <link href="/css/ext-4.1.1/ext-all-debug.css" media="screen" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript">
@@ -17,33 +19,29 @@ Ext.onReady(function(){
     }
   });
 
-  var mysql_manager = Ext.create( "MySQLManager",{
-  });
+  var mysql_manager = Ext.create( "MySQLManager",{});
 
   var nav_panel = Ext.create( "Ext.panel.Panel", {
+    //id: "nav_panel",
     items: [{
       title: "R&D",
       items: [btn_rndc]
-    },{
-      html: "Buttons",
-      title: "SerialTesting ( ST )"
-    },{
+    }, mysql_manager, {
       html: "Buttons",
       title: "Production"
     }],
     title: "Navigation",
+    split: true,
     width: 200,
     layout: 'accordion',
     region: 'west',
-    defaults: {
-      bodyStyle: 'padding:15px'
-    },
+    //defaults: { bodyStyle: 'padding:15px' },
+    collapsible: true,
     layoutConfig: {
       animate: true,
       activeOnTop: true,
       titleCollapse: false,
-    },
-    collapsible: true
+    }
   });
 
   Ext.create('Ext.container.Viewport', {
@@ -57,16 +55,6 @@ Ext.onReady(function(){
     }, 
 
     nav_panel,
-    
-    /**
-    {
-      title: 'Navigation',
-      width: 150,
-      region: 'west',
-      collapsible: true
-      // could use a TreePanel or AccordionLayout for navigational items
-    }, 
-    */
     
     {
       html: 'Information goes here',

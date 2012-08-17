@@ -1,0 +1,8 @@
+{
+  "databases": [{
+    "port": 3306,
+    "username": "root",
+    "password": "orange1",
+    "hostname": "localhost"
+  }]
+}
