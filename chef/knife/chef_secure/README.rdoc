@@ -1,0 +1,9 @@
+= Introduction
+@author Bryan Kroger ( bryan.kroger@gmail.com )
+
+Knife plugin for interacting with chef_secure.
+
+= Usage
+
+knife secure list
+
