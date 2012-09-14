@@ -55,7 +55,7 @@ cookbook_file "/etc/chef/validation.pem" do
   mode "0600"
   owner "root"
   group "root"
-  source "valdiation.pem"
+  source "validation.pem"
 end
 
 case node["chef_client"]["init_style"]
