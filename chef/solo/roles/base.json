@@ -5,5 +5,5 @@
   "json_class": "Chef::Role",
   "description": "Base",
   "chef_type": "role",
-  "run_list": [ "recipe[base::default]" ]
+  "run_list": [ "recipe[base::default]","recipe[chef-client]" ]
 }
