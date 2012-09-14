@@ -39,7 +39,7 @@ else
 end
 
 
-%w{run_path cache_path backup_path log_dir}.each do |key|
+%w{run_path conf_dir cache_path backup_path log_dir}.each do |key|
   directory node["chef_client"][key] do
     recursive true
     # Work-around for CHEF-2633
@@ -49,6 +49,13 @@ end
     end
     mode 0755
   end
+end
+
+cookbook_file "/etc/chef/validation.pem" do
+  mode "0600"
+  owner "root"
+  group "root"
+  source "valdiation.pem"
 end
 
 case node["chef_client"]["init_style"]
@@ -242,9 +249,3 @@ else
   log "Could not determine service init style, manual intervention required to start up the chef-client service."
 end
 
-cookbook_file "/etc/chef/validation.pem" do
-  mode "0600"
-  owner "root"
-  group "root"
-  source "valdiation.pem"
-end
