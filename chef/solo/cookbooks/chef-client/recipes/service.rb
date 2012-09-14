@@ -58,6 +58,8 @@ template "/etc/chef/client.rb" do
   source "client.rb.erb"
 end
 
+node["chef_client"]["chef_server_url"] = "http://chef-server0.ksonsoftware.com"
+
 cookbook_file "/etc/chef/validation.pem" do
   mode "0600"
   owner "root"
