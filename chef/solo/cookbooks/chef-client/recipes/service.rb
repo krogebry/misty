@@ -51,7 +51,7 @@ end
   end
 end
 
-Chef::Config[:chef_server_url] = "http://chef-server0.ksonsoftware.com"
+Chef::Config[:chef_server_url] = "http://chef-server0.ksonsoftware.com:4000"
 
 template "/etc/chef/client.rb" do
   mode "0600"
