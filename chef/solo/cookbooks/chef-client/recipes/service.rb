@@ -51,6 +51,13 @@ end
   end
 end
 
+template "/etc/chef/client.rb" do
+  mode "0600"
+  owner "root"
+  group "root"
+  source "client.rb.erb"
+end
+
 cookbook_file "/etc/chef/validation.pem" do
   mode "0600"
   owner "root"
