@@ -38,12 +38,6 @@ else
   raise "Could not locate the chef-client bin in any known path. Please set the proper path by overriding node['chef_client']['bin'] in a role."
 end
 
-cookbook_file "/etc/chef/validation.pem" do
-  mode "0600"
-  owner "root"
-  group "root"
-  source "valdiation.pem"
-end
 
 %w{run_path cache_path backup_path log_dir}.each do |key|
   directory node["chef_client"][key] do
@@ -246,4 +240,11 @@ when "bsd"
   log "Hint: chef-client -i #{node["chef_client"]["client_interval"]} -s #{node["chef_client"]["client_splay"]}"
 else
   log "Could not determine service init style, manual intervention required to start up the chef-client service."
+end
+
+cookbook_file "/etc/chef/validation.pem" do
+  mode "0600"
+  owner "root"
+  group "root"
+  source "valdiation.pem"
 end
