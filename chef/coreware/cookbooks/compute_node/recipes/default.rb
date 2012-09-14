@@ -7,8 +7,6 @@
 # All rights reserved - Do Not Redistribute
 #
 
-directory "/tmp/blah" do
-end
 
-test = data_bag_item( "test","bag" )
-test = data_bag( "test" )
+#test = data_bag_item( "test","bag" )
+#test = data_bag( "test" )
