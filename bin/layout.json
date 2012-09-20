@@ -1,0 +1,12 @@
+{"clusters" : {
+  "prod0" : {
+      "backend" : {
+        "count" : 2,
+        "flavorId" : 103
+      },
+      "frontend" : {
+        "count" : 3,
+        "flavorId" : 103
+      }
+  }
+}}

@@ -1,0 +1,9 @@
+pid_file           "/var/run/chef/client.pid"
+log_level          :info
+log_location       STDOUT
+cache_options({ :path => "/var/cache/chef/checksums", :skip_expires => true})
+ssl_verify_mode    :verify_none
+chef_server_url    "https://chefe-server1.ksonsoftware.com/organizations/troll"
+file_cache_path    "/var/cache/chef"
+file_backup_path   "/var/lib/chef/backup"
+validation_client_name "troll-validator"

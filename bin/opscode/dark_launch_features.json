@@ -1,0 +1,12 @@
+{
+  "quick_start": false,
+  "new_theme": true,
+  "private-chef": true,
+  "sql_users": true,
+  "couchdb_roles": true,
+  "couchdb_data": true,
+  "couchdb_cookbooks": true,
+  "couchdb_checksums": true,
+  "couchdb_environments": true,
+  "add_type_and_bag_to_items": true
+}

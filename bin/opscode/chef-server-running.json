@@ -1,0 +1,557 @@
+{
+  "private_chef": {
+    "notification_email": "pc-default@opscode.com",
+    "from_email": "\"Opscode\" <donotreply@opscode.com>",
+    "database_type": "postgresql",
+    "role": "backend",
+    "user": {
+      "username": "opscode",
+      "shell": "/bin/sh",
+      "home": "/opt/opscode/embedded"
+    },
+    "couchdb": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/couchdb",
+      "data_dir": "/var/opt/opscode/drbd/data/couchdb",
+      "log_directory": "/var/log/opscode/couchdb",
+      "port": 5984,
+      "bind_address": "0.0.0.0",
+      "vip": "127.0.0.1",
+      "max_document_size": "4294967296",
+      "max_attachment_chunk_size": "4294967296",
+      "os_process_timeout": "300000",
+      "max_dbs_open": 10000,
+      "delayed_commits": "true",
+      "batch_save_size": 1000,
+      "batch_save_interval": 1000,
+      "log_level": "error",
+      "reduce_limit": "false"
+    },
+    "rabbitmq": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/rabbitmq",
+      "data_dir": "/var/opt/opscode/drbd/data/rabbitmq",
+      "log_directory": "/var/log/opscode/rabbitmq",
+      "vhost": "/chef",
+      "user": "chef",
+      "password": "20710a6f96f68213be6d2345d2cd1da00d8d7c3f5370ad52463a72edb9a704554d4b7f66ca585b49ddeb7676e588b6a0d3d3",
+      "reindexer_vhost": "/reindexer",
+      "jobs_vhost": "/jobs",
+      "jobs_user": "jobs",
+      "jobs_password": "558efbb0e108f36af6f5913b652404acb9d5ef3cd6e72b9333f427e68a1ff35530800508a34d7d224f45944a6e126ebdccad",
+      "node_ip_address": "0.0.0.0",
+      "node_port": "5672",
+      "nodename": "rabbit@localhost",
+      "vip": "127.0.0.1",
+      "consumer_id": "hotsauce"
+    },
+    "opscode-solr": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/opscode-solr",
+      "data_dir": "/var/opt/opscode/drbd/data/opscode-solr",
+      "log_directory": "/var/log/opscode/opscode-solr",
+      "heap_size": "256M",
+      "java_opts": "",
+      "url": "http://localhost:8983",
+      "ip_address": "0.0.0.0",
+      "vip": "127.0.0.1",
+      "port": 8983,
+      "ram_buffer_size": 200,
+      "merge_factor": 100,
+      "max_merge_docs": 2147483647,
+      "max_field_length": 100000,
+      "max_commit_docs": 1000,
+      "commit_interval": 60000,
+      "poll_seconds": 20,
+      "command": "java -Xmx256M -Xms256M -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8086 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dsolr.data.dir=/var/opt/opscode/drbd/data/opscode-solr -Dsolr.solr.home=/var/opt/opscode/opscode-solr/home -server -jar '/var/opt/opscode/opscode-solr/jetty/start.jar'"
+    },
+    "opscode-expander": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/opscode-expander",
+      "log_directory": "/var/log/opscode/opscode-expander",
+      "reindexer_log_directory": "/var/log/opscode/opscode-expander-reindexer",
+      "consumer_id": "default",
+      "nodes": 2
+    },
+    "opscode-chef": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/opscode-chef",
+      "log_directory": "/var/log/opscode/opscode-chef",
+      "sandbox_path": "/var/opt/opscode/drbd/data/opscode-chef/sandbox",
+      "checksum_path": "/var/opt/opscode/drbd/data/opscode-chef/checksum",
+      "proxy_user": "pivotal",
+      "environment": "privatechef",
+      "url": "http://127.0.0.1:9460",
+      "upload_vip": "127.0.0.1",
+      "upload_port": 9460,
+      "upload_proto": "http",
+      "upload_internal_vip": "127.0.0.1",
+      "upload_internal_port": 9460,
+      "upload_internal_proto": "http",
+      "vip": "127.0.0.1",
+      "port": 9460,
+      "listen": "127.0.0.1:9460",
+      "backlog": 1024,
+      "tcp_nodelay": true,
+      "worker_timeout": 3600,
+      "validation_client_name": "chef",
+      "umask": "0022",
+      "worker_processes": 6,
+      "web_ui_client_name": "chef-webui",
+      "web_ui_admin_user_name": "admin",
+      "web_ui_admin_default_password": "p@ssw0rd1"
+    },
+    "opscode-erchef": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/opscode-erchef",
+      "log_directory": "/var/log/opscode/opscode-erchef",
+      "vip": "127.0.0.1",
+      "listen": "127.0.0.1",
+      "port": 8000,
+      "auth_skew": "900",
+      "bulk_fetch_batch_size": "5",
+      "max_cache_size": "10000",
+      "cache_ttl": "3600",
+      "db_pool_size": "20",
+      "couchdb_max_conn": "100"
+    },
+    "opscode-webui": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/opscode-webui",
+      "log_directory": "/var/log/opscode/opscode-webui",
+      "environment": "privatechef",
+      "url": "http://127.0.0.1:9462",
+      "listen": "127.0.0.1:9462",
+      "vip": "127.0.0.1",
+      "port": 9462,
+      "backlog": 1024,
+      "tcp_nodelay": true,
+      "worker_timeout": 3600,
+      "validation_client_name": "chef",
+      "umask": "0022",
+      "worker_processes": 2,
+      "session_key": "_sandbox_session",
+      "cookie_domain": "all",
+      "cookie_secret": "c99eb229e6cec73226ec1d8ce8df158028c3a0af61a93b520b66d39675825e60702a0b9402f9884a08c1eba588b998b830d8"
+    },
+    "lb": {
+      "enable": true,
+      "vip": "127.0.0.1",
+      "api_fqdn": "api.prod0.ksonsoftware.com",
+      "web_ui_fqdn": "api.prod0.ksonsoftware.com",
+      "cache_cookbook_files": false,
+      "debug": false,
+      "upstream": {
+        "opscode-chef": [
+          "127.0.0.1"
+        ],
+        "opscode-erchef": [
+          "127.0.0.1"
+        ],
+        "opscode-account": [
+          "127.0.0.1"
+        ],
+        "opscode-webui": [
+          "127.0.0.1"
+        ],
+        "opscode-authz": [
+          "127.0.0.1"
+        ],
+        "opscode-solr": [
+          "127.0.0.1"
+        ]
+      },
+      "ha": true
+    },
+    "lb_internal": {
+      "enable": true,
+      "vip": "127.0.0.1",
+      "chef_port": 9680,
+      "account_port": 9685,
+      "authz_port": 9683
+    },
+    "nginx": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/nginx",
+      "log_directory": "/var/log/opscode/nginx",
+      "ssl_port": 443,
+      "enable_non_ssl": false,
+      "non_ssl_port": 80,
+      "x_forwarded_proto": "https",
+      "server_name": "api.prod0.ksonsoftware.com",
+      "url": "https://api.prod0.ksonsoftware.com",
+      "ssl_protocols": "SSLv3 TLSv1",
+      "ssl_ciphers": "RC4-SHA:RC4-MD5:RC4:RSA:HIGH:MEDIUM:!LOW:!kEDH:!aNULL:!ADH:!eNULL:!EXP:!SSLv2:!SEED:!CAMELLIA:!PSK",
+      "ssl_certificate": "/var/opt/opscode/nginx/ca/api.prod0.ksonsoftware.com.crt",
+      "ssl_certificate_key": "/var/opt/opscode/nginx/ca/api.prod0.ksonsoftware.com.key",
+      "ssl_country_name": "US",
+      "ssl_state_name": "WA",
+      "ssl_locality_name": "Seattle",
+      "ssl_company_name": "YouCorp",
+      "ssl_organizational_unit_name": "Operations",
+      "ssl_email_address": "you@example.com",
+      "worker_processes": 4,
+      "worker_connections": 10240,
+      "sendfile": "on",
+      "tcp_nopush": "on",
+      "tcp_nodelay": "on",
+      "gzip": "on",
+      "gzip_http_version": "1.0",
+      "gzip_comp_level": "2",
+      "gzip_proxied": "any",
+      "gzip_types": [
+        "text/plain",
+        "text/css",
+        "application/x-javascript",
+        "text/xml",
+        "application/xml",
+        "application/xml+rss",
+        "text/javascript",
+        "application/json"
+      ],
+      "keepalive_timeout": 65,
+      "client_max_body_size": "250m",
+      "cache_max_size": "5000m"
+    },
+    "mysql": {
+      "enable": false,
+      "sql_user": "opscode_chef",
+      "sql_password": "42706265161de47259c95aa384fec26c0f51ccf6c9a7bf2407487ad54538af9b7b701d709c39563f9dbc16c739eead27747c",
+      "vip": "127.0.0.1",
+      "destructive_migrate": false,
+      "install_libs": true,
+      "mysql2_versions": [
+        "0.3.6",
+        "0.3.7"
+      ]
+    },
+    "postgresql": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/postgresql",
+      "data_dir": "/var/opt/opscode/drbd/data/postgresql",
+      "log_directory": "/var/log/opscode/postgresql",
+      "username": "opscode-pgsql",
+      "shell": "/bin/sh",
+      "home": "/opt/opscode/embedded",
+      "sql_user": "opscode_chef",
+      "sql_password": "1d1c521ab8321299e870e82e92deacdc5b5151edda28c6568464359cd9ececf9d65781e9a99628e77a0092c256a17ae95745",
+      "sql_ro_user": "opscode_chef_ro",
+      "sql_ro_password": "35a0be3f4052a0e81e6d60956ce11cf83e36cc5f3d87152bdf5e5ecd3cf1e484fb22fc0659ecea324ad03e89b52bb77f443d",
+      "vip": "127.0.0.1",
+      "port": 5432,
+      "listen_address": "0.0.0.0",
+      "max_connections": 200,
+      "md5_auth_cidr_addresses": [
+        "0.0.0.0/0",
+        "::0/0"
+      ],
+      "trust_auth_cidr_addresses": [
+        "127.0.0.1/32",
+        "::1/128"
+      ],
+      "shmmax": 17179869184,
+      "shmall": 4194304
+    },
+    "redis": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/redis",
+      "log_directory": "/var/log/opscode/redis",
+      "port": "6379",
+      "bind": "0.0.0.0",
+      "vip": "127.0.0.1",
+      "timeout": "300",
+      "loglevel": "notice",
+      "databases": "16",
+      "appendonly": "no",
+      "appendfsync": "everysec",
+      "vm": {
+        "enabled": "no",
+        "max_memory": "0",
+        "page_size": "32",
+        "pages": "134217728",
+        "max_threads": "4"
+      },
+      "root": "/var/opt/opscode/redis",
+      "maxmemory": "1g",
+      "maxmemory_policy": "volatile-lru"
+    },
+    "opscode-authz": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/opscode-authz",
+      "log_directory": "/var/log/opscode/opscode-authz",
+      "caching": "enabled",
+      "port": 9463,
+      "vip": "127.0.0.1",
+      "superuser_id": "e641962de972ec0ceda697cedfef1a2f",
+      "couchdb_max_conn": "100"
+    },
+    "opscode-certificate": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/opscode-certificate",
+      "log_directory": "/var/log/opscode/opscode-certificate",
+      "port": 5140,
+      "vip": "127.0.0.1",
+      "num_workers": "2",
+      "num_certificates_per_worker": "50"
+    },
+    "opscode-org-creator": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/opscode-org-creator",
+      "log_directory": "/var/log/opscode/opscode-org-creator",
+      "ready_org_depth": 10,
+      "max_workers": 1,
+      "create_wait_ms": 30000,
+      "create_splay_ms": 25000,
+      "port": 4369
+    },
+    "dark_launch": {
+      "quick_start": false,
+      "new_theme": true,
+      "private-chef": true,
+      "sql_users": true,
+      "couchdb_roles": true,
+      "couchdb_data": true,
+      "couchdb_cookbooks": true,
+      "couchdb_checksums": true,
+      "couchdb_environments": true,
+      "add_type_and_bag_to_items": true
+    },
+    "opscode-account": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/opscode-account",
+      "log_directory": "/var/log/opscode/opscode-account",
+      "proxy_user": "pivotal",
+      "session_secret_key": "484993a5f37d72b1ce436e726c26db4b63abecf8ba1f551a48245eb91ba44bfe84f9a1db9f853be553e752c73241ff81edb5",
+      "environment": "privatechef",
+      "vip": "127.0.0.1",
+      "port": 9465,
+      "url": "http://127.0.0.1:9465",
+      "listen": "127.0.0.1:9465",
+      "backlog": 1024,
+      "tcp_nodelay": true,
+      "worker_timeout": 3600,
+      "validation_client_name": "chef",
+      "umask": "0022",
+      "worker_processes": 4
+    },
+    "bootstrap": {
+      "enable": false,
+      "bootstrap_server": false
+    },
+    "estatsd": {
+      "enable": true,
+      "dir": "/var/opt/opscode/estatsd",
+      "log_directory": "/var/log/opscode/estatsd",
+      "vip": "127.0.0.1",
+      "port": 9466
+    },
+    "nagios": {
+      "enable": true,
+      "ha": true,
+      "dir": "/var/opt/opscode/nagios",
+      "log_directory": "/var/log/opscode/nagios",
+      "php_fpm_log_directory": "/var/log/opscode/php-fpm",
+      "fcgiwrap_log_directory": "/var/log/opscode/fcgiwrap",
+      "admin_user": "nagiosadmin",
+      "admin_password": "002f8834707b8dfd5019b9be0c09294938e376a14fef464ee5b2318b270b2dea2bb53574ebcfbcb005971b425a1f2fed24e3",
+      "admin_email": "nobody@example.com",
+      "admin_pager": "nobody@example.com",
+      "debug_level": 0,
+      "debug_verbosity": 1,
+      "alert_email": "nobody@example.com",
+      "interval_length": 1,
+      "default_host": {
+        "check_interval": 15,
+        "retry_interval": 15,
+        "max_check_attempts": 1,
+        "notification_interval": 300
+      },
+      "default_service": {
+        "check_interval": 60,
+        "retry_interval": 15,
+        "max_check_attempts": 3,
+        "notification_interval": 1200
+      },
+      "port": 9671,
+      "fcgiwrap_port": 9670,
+      "php_fpm_port": 9000,
+      "hosts": {
+        "backend0": {
+          "ipaddress": "10.2.85.100",
+          "hostgroups": [
+            "couchdb",
+            "rabbitmq",
+            "postgresql",
+            "opscode-authz",
+            "opscode-certificate",
+            "opscode-account",
+            "opscode-solr",
+            "opscode-expander",
+            "opscode-org-creator",
+            "opscode-chef",
+            "opscode-erchef",
+            "opscode-webui",
+            "nginx",
+            "lb",
+            "lb_internal"
+          ]
+        }
+      }
+    },
+    "nrpe": {
+      "enable": true,
+      "dir": "/var/opt/opscode/nrpe",
+      "log_directory": "/var/log/opscode/nrpe",
+      "port": 9672,
+      "listen": "10.2.85.100",
+      "allowed_hosts": [
+        "127.0.0.1",
+        "10.2.85.100",
+        "10.2.85.97"
+      ]
+    },
+    "drbd": {
+      "enable": true,
+      "dir": "/var/opt/opscode/drbd",
+      "data_dir": "/var/opt/opscode/drbd/data",
+      "sync_rate": "40M",
+      "shared_secret": "faa11f789650bd99270ce5f9e0cca4bc58342a119dc7f23c2438cb00ab29",
+      "device": "/dev/drbd0",
+      "disk": "/dev/opscode/drbd",
+      "flexible_meta_disk": "internal",
+      "primary": {
+        "fqdn": "backend0.prod0.ksonsoftware.com",
+        "ip": "10.2.85.100",
+        "port": 7788
+      },
+      "secondary": {
+        "fqdn": "backend1.prod0.ksonsoftware.com",
+        "ip": "10.2.85.97",
+        "port": 7788
+      },
+      "version": "8.3.11"
+    },
+    "keepalived": {
+      "enable": true,
+      "dir": "/var/opt/opscode/keepalived",
+      "log_directory": "/var/log/opscode/keepalived",
+      "smtp_server": "127.0.0.1",
+      "smtp_connect_timeout": "30",
+      "vrrp_sync_group": "PC_GROUP",
+      "vrrp_sync_instance": "PC_VI",
+      "vrrp_instance_state": "BACKUP",
+      "vrrp_instance_interface": "eth0",
+      "vrrp_instance_virtual_router_id": "1",
+      "vrrp_instance_priority": "100",
+      "vrrp_instance_advert_int": "1",
+      "vrrp_instance_password": "ca12780a6f0bdcadde8c9ebdf12e4bb4b4288a73ae3dabb44db47c644b7348219cecdcdd69ee89d0c270f9df1b9c4b05ba54",
+      "vrrp_instance_ipaddress": "10.2.85.100",
+      "vrrp_instance_ipaddress_dev": "eth0",
+      "vrrp_instance_vrrp_unicast_bind": "10.2.85.100",
+      "vrrp_instance_vrrp_unicast_peer": "10.2.85.97",
+      "vrrp_instance_preempt_delay": 30,
+      "vrrp_instance_nopreempt": true,
+      "service_order": [
+        {
+          "key": "couchdb",
+          "service_name": "couchdb"
+        },
+        {
+          "key": "postgresql",
+          "service_name": "postgres"
+        },
+        {
+          "key": "rabbitmq",
+          "service_name": "rabbitmq"
+        },
+        {
+          "key": "redis",
+          "service_name": "redis"
+        },
+        {
+          "key": "opscode-authz",
+          "service_name": "opscode-authz"
+        },
+        {
+          "key": "opscode-certificate",
+          "service_name": "opscode-certificate"
+        },
+        {
+          "key": "opscode-account",
+          "service_name": "opscode-account"
+        },
+        {
+          "key": "opscode-solr",
+          "service_name": "opscode-solr"
+        },
+        {
+          "key": "opscode-expander",
+          "service_name": "opscode-expander"
+        },
+        {
+          "key": "opscode-expander",
+          "service_name": "opscode-expander-reindexer"
+        },
+        {
+          "key": "opscode-org-creator",
+          "service_name": "opscode-org-creator"
+        },
+        {
+          "key": "opscode-chef",
+          "service_name": "opscode-chef"
+        },
+        {
+          "key": "opscode-erchef",
+          "service_name": "opscode-erchef"
+        },
+        {
+          "key": "opscode-webui",
+          "service_name": "opscode-webui"
+        },
+        {
+          "key": "nagios",
+          "service_name": "php-fpm"
+        },
+        {
+          "key": "nagios",
+          "service_name": "fcgiwrap"
+        },
+        {
+          "key": "nagios",
+          "service_name": "nagios"
+        },
+        {
+          "key": "nginx",
+          "service_name": "nginx"
+        }
+      ],
+      "service_posthooks": {
+        "rabbitmq": "/opt/opscode/bin/wait-for-rabbit"
+      }
+    },
+    "ldap": {
+    },
+    "upgrades": {
+      "dir": "/var/opt/opscode/upgrades"
+    },
+    "aws": {
+    }
+  },
+  "run_list": [
+    "recipe[private-chef]"
+  ]
+}
